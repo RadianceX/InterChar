@@ -1,13 +1,6 @@
 import string
 from typing import Final, List, Tuple, Dict, Generator
 
-# DON'T DO AS FOLLOWING
-# a = ('1', '2')
-# b = ('2', '1')
-lang_common = ('1', '2', '3', 'ц', '0', 'й')
-lang_orcish = ('1', '2', '3', '6', '0', 'й')
-lang_test = ('s', '2', 'ю', 'b', 'a', '7')
-
 
 class Translator:
     """
