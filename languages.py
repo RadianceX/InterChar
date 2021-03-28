@@ -5,6 +5,6 @@ from typing import Final
 # a = ('1', '2')
 # b = ('2', '1')
 
-lang_common: Final[tuple] = ('1', '2', '3', 'ц', '0', 'й')
-lang_orcish: Final[tuple] = ('1', '2', '3', '6', '0', 'й')
-lang_test: Final[tuple] = ('s', '2', 'ю', 'b', 'a', '7')
+common: Final[tuple] = ('1', '2', '3', 'ц', '0', 'й')
+orcish: Final[tuple] = ('1', '2', '3', '6', '0', 'й')
+debug: Final[tuple] = ('s', '2', 'ю', 'b', 'a', '7')

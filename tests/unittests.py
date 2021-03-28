@@ -1,13 +1,13 @@
 import unittest
 from translator import Translator
-from translator import lang_orcish, lang_common, lang_test
+from languages import orcish, common, debug
 
 
 class LanguageTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.orcish_translator = Translator(lang_orcish)
-        self.common_translator = Translator(lang_common)
-        self.debug_translator = Translator(lang_test)
+        self.orcish_translator = Translator(orcish)
+        self.common_translator = Translator(common)
+        self.debug_translator = Translator(debug)
         self.message = "ABCDefЙцук1234іІєї!#\""
 
     def test_orcish_to_orcish(self):
@@ -63,7 +63,7 @@ class LanguageTests(unittest.TestCase):
 
 class MessageTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.translator = Translator(lang_common)
+        self.translator = Translator(common)
 
     def test_message_without_head(self):
         msg = "1 2 3 6 0 й 6 0 6 0 6 3 й 6 0 3 й й 1"
@@ -72,13 +72,13 @@ class MessageTests(unittest.TestCase):
         )
 
     def test_valid_message(self):
-        msg = "й й 2 1 2 3 6 0 й 3 3 3 6 6 0 3 6 0 0 6 0 6 й й 1"
+        msg = "й й 2 1 2 3 6 0 й 1 1 1 3 3 3 6 6 6 й й й й й 1"
         self.assertTrue(
             self.translator.is_encoded(msg)
         )
 
     def test_invalid_len_message(self):
-        msg = "й й 2 1 2 3 6 0 й 6 0 6 0 6 3 й 6 0 й й 1"
+        msg = "й й 2 1 2 3 6 0 й 6 0 6 0 6 3 й 6 й й 1"
         self.assertFalse(
             self.translator.is_encoded(msg)
         )
