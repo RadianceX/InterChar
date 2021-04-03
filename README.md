@@ -8,8 +8,8 @@ This WoW addon will solve the problem with cross-faction communication. Both pla
 
 ## Roadmap
  - ~~Initial version~~ (Done)
- - Implementation of long-message splitting (In progress)
- - WoW addon developing (TBD)
+ - Implementation of long-message splitting (TBD)
+ - WoW addon developing (In progress)
    - rewrite python code to lua
    - Initial version
    - messaging via charFrame
