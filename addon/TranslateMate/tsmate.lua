@@ -1,11 +1,4 @@
 local utf8lib = TSMATE.libs.utf8
-local DEBUG_ = true
-
-function DEBUG_MESSAGE(msg)
-    if DEBUG_ == true then
-        DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000"..msg.."|r") 
-    end
-end
 
 TranslateMate = {}
 function TranslateMate:new()
@@ -32,18 +25,14 @@ function TranslateMate:new()
         end
 
         function private:try_to_translate(eventType, msg, speaker, language, ...)
-            DEBUG_MESSAGE("try_to_translate call")
             if (string.find(private.supported_languages, language)) == nil then
-                DEBUG_MESSAGE("LANG NOT SUPPORTED "..language)
                 return false
             end
-            -- if private.translator:is_encoded(msg) == false then
-            --     DEBUG_MESSAGE("MESSAGE NOT ENCODED "..msg)
-            --     return false
-            -- end
+            if private.translator:is_encoded(msg) == false then
+                return false
+            end
             -- Decode message
             local decoded = private.translator:decode(msg)
-            DEBUG_MESSAGE(decoded)
             if decoded ~= nil then
                 return false, decoded, speaker, "|cFFFFAA11"..language.."|r", ...;
             end
@@ -64,7 +53,6 @@ function TranslateMate:new()
             :param msg: input message
             :param editBox: chat window???
             ]]
-            DEBUG_MESSAGE("handle_player_input call")
             if (not msg or msg == "") then
                 private:colorized_message("    DEBUG ADDON DESCIPTION")
                 return
@@ -84,7 +72,6 @@ function TranslateMate:new()
 
         function public:Init()
             -- Register input  message handler
-            DEBUG_MESSAGE("Init call")
             SLASH_TS1 = "/ts"
             SLASH_TS2 = "/translatemate"
             SlashCmdList["TS"] = function(msg, editBox) private:handle_player_input(msg, editBox) end

@@ -204,13 +204,17 @@ function Translator:new(lang_uniq_symbols)
                 return false
             end
             -- First two symbols of head and tail always the same
-            if (msg_chars[0] ~= msg_chars[1]) or 
-               (msg_chars[#msg_chars-2] ~= msg_chars[#msg_chars-3]) or
-               (msg_chars[0] ~= msg_chars[#msg_chars-2]) then
+            local msg_len = utf8lib.utf8len(message)
+            local head_a = utf8lib.utf8sub(message, 1, 1)
+            local head_b = utf8lib.utf8sub(message, 2, 2)
+            local tail_a = utf8lib.utf8sub(message, msg_len-1, msg_len-1)
+            local tail_b = utf8lib.utf8sub(message, msg_len-2, msg_len-2)
+
+            if head_a ~= head_b or head_a ~= tail_a or tail_a ~= tail_b then
                 return false
             end
             -- Message lenght should be multiple of a encoded_symbol lenght
-            if (utf8lib.utf8len(message) - #private.encoding_alphabet) % private.num_symbols_used_to_encode then
+            if (utf8lib.utf8len(message) - #private.encoding_alphabet) % private.num_symbols_used_to_encode ~= 0 then
                 return false
             end
             return true
@@ -290,6 +294,7 @@ function Translator:new(lang_uniq_symbols)
             :return: bool result
             --]]
             local filtered_message = private:filter_message(message)
+
             if private:fast_check(filtered_message) == true then
                 return true
             end
