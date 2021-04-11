@@ -1,16 +1,22 @@
 # WoWCharTranslator
 ## What is this?
-This WoW addon will solve the problem with cross-faction communication. Both players should install the addon
+This WoW addon will solve the problem with cross-faction communication.
 
 ## Supported languages
  - Orcish
  - Common
 
+## Supported WorldOfWarcraft clients
+ - EN
+ - RU
+
+## Howto
+Type /ts <message> to encode your message and send it to the chat.
+All players who have installed addon will decode this message and receive original text, even if sender belongs to opposite faction.
+
+
 ## Roadmap
- - ~~Initial version~~ (Done)
- - Implementation of long-message splitting (TBD)
- - WoW addon developing (In progress)
-   - rewrite python code to lua
-   - Initial version
-   - messaging via charFrame
-   - messaging via addon chat frame
+ - ~~Initial version~~
+ - ~~WoW addon development~~
+ - Develop long messages splitting into parts mechanism
+ - Update WoW addon to handle long messages
