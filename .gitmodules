@@ -1,0 +1,3 @@
+[submodule "addon/TranslateMate"]
+	path = addon/TranslateMate
+	url = https://github.com/RadianceX/TranslateMate
